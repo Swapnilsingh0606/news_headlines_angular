@@ -1,1 +1,77 @@
 
+Implementation and Testing Documentation
+
+application run on localhost:4200;
+run `npm start` command it the terminal.
+
+1. Role-Based Authentication Mechanism
+
+Role-based authentication in the Angular application is implemented using Angular Router Guards. Three roles are defined: admin, user, and guest. Each role has its own set of permissions and access restrictions.
+
+a. Admin Role:
+
+Admin has access to all functionalities and dashboards.
+Implementation:
+Create a common AuthGuard that implements CanActivate interface.
+In the AuthGuard, check if the user is logged in and has admin role.
+If the user is an admin, allow access to the requested route, otherwise redirect to login page.
+
+b. User Role:
+
+User has limited access compared to admin.
+Implementation:
+Create a common AuthGuard that implements CanActivate interface.
+In the AuthGuard, check if the user is logged in and has user role.
+If the user is a user, allow access to the requested route, otherwise redirect to login page.
+
+c. Guest Role:
+
+Guest has the most limited access.
+Implementation:
+Guest as like the visitor on the home page.
+If they want to access the more news headlines they redirect to the login or registration page.
+
+d. Registered user storage
+
+Currently we are not implemented a server side scripting to connect with any database.
+Localstorage is used as database. When user registed on the app via registration details his details will save into the local storage.
+And when any guest or visitor visit the home page then we save time and name as the ramdom user as guest in the localstorage.
+
+e. Login
+
+
+Login use username and password created at the time of registration.
+In user service we check if the user is exist on localstorage and fetch their details and on the role base redirect to the page.
+
+f. Nav bar 
+
+
+Navbar is common component use in every component.
+When it home so it will display three tabs Home, Login, Registration.
+When it redirect to the Admin User Dashboard then it will show only two tabs Home and Logout.
+
+
+2. Testing
+
+a. Admin Testing:
+
+Login with admin credentials.
+Verify access to all functionalities and admin dashboard.
+Test changing API source and accessing user and guest counts.
+
+b. User Testing:
+
+Login with user credentials.
+Verify access to user-specific functionalities and user dashboard.
+Ensure inability to access admin-specific functionalities.
+
+c. Guest Testing:
+
+Access the application without logging in.
+Verify limited access to only basic functionalities available to guests.
+Ensure inability to access user or admin dashboards.
+
+d. Overall Application Testing:
+
+Test navigation between different pages for each role.
+Verify proper redirection to login page for unauthorized access attempts.

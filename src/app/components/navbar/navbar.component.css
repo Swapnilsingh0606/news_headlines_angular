@@ -1,0 +1,8 @@
+.navbar {
+    margin-bottom: 20px;
+  }
+
+.navbar-tabs {
+    justify-content: end;
+    margin-right: 10px;
+}
